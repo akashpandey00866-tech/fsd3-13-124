@@ -21,45 +21,25 @@ greet("hello")
 const numberToWord = (a) => {
     switch (a) {
         case 0:
-            console.log('zero');
-            
-            break;
+            return 'zero'
         case 1:
-            console.log('one');
-            
-            break;
+            return 'one'
         case 2:
-            console.log('two');
-            
-            break;
+            return 'two'
         case 3:
-            console.log('three');
-            
-            break;
+            return 'three'
         case 4:
-            console.log('four');
-            
-            break;
+            return 'four'
         case 5:
-            console.log('five');
-            
-            break;
+            return 'five'
         case 6:
-            console.log('six');
-            
-            break;
+            return 'six'
         case 7:
-            console.log('seven');
-            
-            break;
+            return 'seven'
         case 8:
-            console.log('eight');
-            
-            break;
+            return 'eight'
         case 9:
-            console.log('nine');
-            
-            break;
+            return 'nine'
     
         default:
             console.log('please entet number between 0 to nine');
@@ -93,3 +73,23 @@ const greet3 = (name) =>
     
     
 greet3('rekha3');
+
+// create another functino that takes a number and show in words with the help of two words function
+
+const toWords = (rollNumber) =>{
+    const numberArr = String(rollNumber).split('');
+    console.log(numberArr);
+    
+    let inword = '';
+    // for(let i = 0; i < numberArr.length; i++){
+    //     inword += `${numberToWord(Number(numberArr[i]))} `;
+    // }
+    numberArr.forEach((num) => {
+        inword += `${numberToWord(Number(num))} `;
+    });
+
+    return inword.toUpperCase();
+        
+     }
+
+console.log(toWords(2503201000125));
