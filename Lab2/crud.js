@@ -37,6 +37,7 @@ const addToCart = async (item) => {
 const showCart = async () => {
 
     const products = await getCart();
+    
 
     if (products.length === 0) {
 
