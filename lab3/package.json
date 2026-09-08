@@ -1,9 +1,11 @@
 {
   "name": "lab3",
   "version": "1.0.0",
-  "description": "ocalhost-URL\r 127.0.0.1 -IP aadress\r ctrll+c -stop the server",
+  "description": "localhost-URL\r 127.0.0.1 -IP aadress\r ctrll+c -stop the server",
   "main": "prg1.js",
   "scripts": {
+    "start":"node app.js" ,
+    "dev":"nodemon prg3.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
