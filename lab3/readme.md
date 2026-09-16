@@ -56,3 +56,17 @@ teh content type and status code can be send  back to client by two ways
 1.res.writeHead
 2.res.setHolder
 3.res.statusCode
+
+## Headers 
+ - header is used to tell the client, the type of data sent by the server it may be html file, json file/data, plain text file, css file, any tokens[for logged in]
+ - Types
+ 1. text/plain -> text file
+ 2. text/html -> html contents/file
+ 3. application/json -> json contents/file
+ 4. text/css -> stylesheet
+ 5. application/form data -> for uploading file
+ 6. application/auth -> for tokens
+the headers can be set by res object at server side by two ways-
+
+1. res.setHeader
+2. res.write
