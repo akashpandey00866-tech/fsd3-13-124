@@ -1,5 +1,5 @@
 import http from 'http'
-import {getAllproducts } from "./products.js";
+import {getAllproducts , AddProducts, deleteProduct } from "./products.js";
 
 const server =http.createServer((req,res) => {
       if (req.url === "/api/v1/products" && req.method === "GET") {
@@ -21,8 +21,9 @@ const server =http.createServer((req,res) => {
           body += chunk;
         });
         req.on("end", () => {
-          const product = JSON.parse(body);
-          console.log("received product:", product);
+          const product = JSON.parse(body)
+          const item =addProduct(product);
+          //console.log("received product:", product);
 
           res.statusCode = 200;
           // res.end("POST Request");
@@ -51,8 +52,15 @@ const server =http.createServer((req,res) => {
         
         //  res.statusCode = 200;
         // res.end("PUT Request");
-      } else if (req.url === "/" && req.method === "DELETE") {
+      } else if (req.url.startsWith("/api/v1/products/") && req.method === "DELETE") {
+        const pid =Number(req.url.split('/').pop());
         res.statusCode = 200;
+        if(deleteProduct(pid)){
+          res.end(JSON.stringify({msg:"item detected"}));
+        }
+        else{
+          res.end(JSON.stringify({msg:'product with id $ {pid} not found '}));
+        }
         res.end("DELETE Request");
       } else {
         res.statusCode = 404;
