@@ -16,10 +16,15 @@ app.get("/api/products",(req,res)=>{
 });
 //query string /reuest query must be before req parameters or dynamic url
 app.get("/api/products/query", (req, res) => {
-    const {search,limit}=res.query;
+    const {search,limit ,mp}=res.query;
     console.log("search:",search);
     console.log("limit:",limit);
     let sortedProducts=[...products]//copy all products
+    if(mp){
+        sortedProducts =sortedProducts,filter(
+            (item)=>item.price <=Number(mp)
+        )
+    }
     if(search){
         sortedProducts=sortedProducts.filter((item)=>item.name.toLowerCase().startsWith(search.tolowerCase()),
 
@@ -57,6 +62,10 @@ app.get("/api/products/:id",(req,res)=>{
     res.send(`will show product id: ${id}`);
 });
 
+app.get('api/products/:id/review/:revid',(req,res)=>{
+    const {id, review, revid} = req.params;
+    const data = products.find((item) => {id:item.id === Number(id)});
+})
 
 
 app.use((req,res)=>{
