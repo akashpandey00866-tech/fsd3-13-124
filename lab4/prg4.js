@@ -62,9 +62,13 @@ app.get("/api/products/:id",(req,res)=>{
     res.send(`will show product id: ${id}`);
 });
 
-app.get('api/products/:id/review/:revid',(req,res)=>{
-    const {id, review, revid} = req.params;
-    const data = products.find((item) => {id:item.id === Number(id)});
+app.get('api/products/:id/reviews/',(req,res)=>{
+    const {id} = req.params;
+    const data = products.find((item) =>{
+        const product = item.id
+        console.log(product.reviews);
+        
+});
 })
 
 
